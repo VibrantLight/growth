@@ -56,7 +56,7 @@ module Growth
 
       mapped_resources = resources.map do |resource|
         resource.unscoped.order(:created_at).first
-      end.compact.map(&:created_at).sort
+      end.compact.map(&:created_at).compact.sort
 
       @years = mapped_resources.empty? ? [Date.current.year] : (mapped_resources.first.to_date.year..Date.current.year).to_a
     end

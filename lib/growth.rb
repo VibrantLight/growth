@@ -10,7 +10,7 @@ module Growth
   mattr_writer :models_to_measure
 
   def self.models_to_measure
-    @@models_to_measure ||= ::ActiveRecord::Base.descendants.map(&:name) - ::ActiveRecord::Base.send(:subclasses).map(&:name)
+    @@models_to_measure ||= ::ActiveRecord::Base.descendants - ::ActiveRecord::Base.send(:subclasses)
   end
   
   def self.setup
